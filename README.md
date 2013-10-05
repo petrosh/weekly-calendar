@@ -21,7 +21,8 @@ var data = [
 	{id: 'cairo', string: '00:00:10'},
 	{id: 'istambul', string: '00:01'}
 ];
-store.set('SAcurrent',data);```
+store.set('SAcurrent',data);
+```
 
 A **chart** is composed by:
 
