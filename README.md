@@ -6,28 +6,17 @@ Ideal for nutrition charts!
 Functions
 ---------
 
-- Display last calendar  
-- Start another chart by picking name and starting date
-- Access to older charts
+- Display current calendar and edit notes.  
+- Start another chart by picking name and starting date.  
+- Access to older charts.  
 
 Data
 ----
 
-### Serialization
+### Charts `WCcharts`
 
-```javascript
-var data = [
-	{id: 'miao', string: '2013-10-01 19:21:22'},
-	{id: 'cairo', string: '00:00:10'},
-	{id: 'istambul', string: '00:01'}
-];
-store.set('SAcurrent',data);
-```
-
-### Chart
-
-- **Chart name** – Unique identifier to recall  
-- **Weekly note set** – A set of notes linked to specific weeks  
+- **Name** – Unique identifier to recall  
+- **Note set** – A set of notes linked to specific weeks  
 - **Starting date** – The offset to display the calendar  
 
 ```javascript
@@ -38,16 +27,31 @@ var charts = [
 ]
 ```
 
-### Weekly Note Set
+### Weekly Note Sets `WCnotesets`
 
-- **Set name** – Unique identifier to recall
-    - **Note name** – Unique identifier to recall  
-    - **Note** – Text string  
-    - **Weeks** – Weeks to display note  
+- **Name** – Unique identifier to recall  
+- **Week duration** – Used to loop  
+- **Week notes** – For every week:  
+	- **Week number**  
+	- **Note**  
 
 ```javascript
 var notesets = [
-	{ name: '----', week: '--',  }
+	{ name: '----', duration: '--', weeknotes: { 1: '----', 5: '----', ... 12: '----' } }
+	{ name: '----', duration: '--', weeknotes: { 2: '----', 4: '----', ... 7: '----' } }
+]
+```
+
+### Runtime notes `WCnotes`
+
+- **Note set name** – Runtime notes are linked to a noteset  
+- **Notes** – For every note  
+	- **Day**  
+	- **Note**  
+
+```javascript
+var notes = [
+	{ noteset: '----', notes: { day: 'yyyy-mm-dd', note: '----', day: 'yyyy-mm-dd', note: '----' } }
 ]
 ```
 
@@ -56,9 +60,18 @@ Workflow
 
 ### New chart
 
-- **Pickup a name** – Check identifier (save chart no set no starting date)  
-- **Pickup a note set or create a new one** – Set notes by week (append set to chart)  
-- **Pickup a starting date** – Table output will begin (appens starting date to chart)
+- **Pickup name, noteset and starting date**  
+	`chart[ name ], chart[ noteset_name ], chart[ starting_date ]`
+
+### New note set
+
+- **Pickup name and duration**  
+	`noteset[ name ], noteset[ duration ]`
+
+Generating week list and editable fields
+
+- **Edit fields and save**  
+	`weeknotes[ week_number ] = string`
 
 ### View chart
 
@@ -78,6 +91,10 @@ Workflow
 			<div data-field-span="1">
 				<label>day month year</label>
 				<input type="text" value="note of the week" class="disabled">
+			</div>
+			<div data-field-span="1">
+				<label>NOTE</label>
+				<input type="text">
 			</div>
 		</div>
 	...
