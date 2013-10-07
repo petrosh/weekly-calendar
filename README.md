@@ -70,18 +70,18 @@ Workflow
 - **TABLE**
 
 ```html
-&lt;form class=&quot;gridform&quot;&gt;
-	&lt;!-- WEEK --&gt;
-	&lt;legend&gt;WEEK n&lt;/legend&gt;
-		&lt;!-- DAY --&gt;
-		&lt;div data-row-span=&quot;2&quot;&gt;
-			&lt;div data-field-span=&quot;1&quot;&gt;
-				&lt;label&gt;day month year&lt;/label&gt;
-				&lt;input type=&quot;text&quot; value=&quot;note of the week&quot; class=&quot;disabled&quot;&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
+<form class="gridform">
+	<!-- WEEK -->
+	<legend>WEEK n</legend>
+		<!-- DAY -->
+		<div data-row-span="2">
+			<div data-field-span="1">
+				<label>day month year</label>
+				<input type="text" value="note of the week" class="disabled">
+			</div>
+		</div>
 	...
-&lt;/form&gt;
+</form>
 ```
 
 Plugins
