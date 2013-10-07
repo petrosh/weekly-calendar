@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>weekly-calendar</title>
+	<!-- ############# CSS ############# -->
+	<link href="css/glDatePicker.default.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="css/gridforms.css">
+	<!-- ############# JS ############# -->
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/glDatePicker.min.js"></script>
+	<script src="js/store+json2.min.js"></script>
+	<script src="js/gridforms.js"></script>
+	<!-- ############# FOR GRIDFORM ############# -->
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<!-- ############# SCRIPT ############# -->
+	<script type="text/javascript">
+		$(window).load(function(){
+			$('#mydate').glDatePicker({
+			    prevArrow: '<',
+			    nextArrow: '>'
+			});
+			/* var data = [
+				{name: 'miao', created: '2013-10-01 19:21:22'},
+				{name: 'bau', created: '2013-11-03 12:00:10'}
+			];
+			store.set('WCchart',data);
+			var all = store.getAll();
+			$('#result').append(JSON.stringify(all, null, 4));
+			console.log(all); */
+			$('#gobut').click(function(e){
+				e.preventDefault();
+				var data = $('input').val();
+				window.location = "?data="+data;
+			})
+		});
+	</script>
+</head>
+<body>
+	<input type="text" id="mydate" gldp-id="mydate" /><a href="#" id="gobut">Go</a>
+	<div gldp-el="mydate"
+		style="width:400px; height:300px; position:absolute; top:70px; left:100px;">
+	</div>
+	<table id="result">
+<!-- 		<?php
+		$date  =$_GET['data'];
+		$nut=array(1=>'A, B: 0,5 - 1,5 ml - Root 0,5 - 1 ml',2=>'A, B: 0,5 - 1,5 ml - Root 0,5 - 1 ml',3=>'A, B: 0,5 - 1,5 ml',4=>'A, B: 0,5 - 1,5 ml',5=>'A, B: 1 - 1,5 ml - PK 0,5 ml',6=>'A, B: 1 - 1,5 ml - PK 0,5 ml - Bloom 0,1 - 0,5 ml');
+		if( isset($date) && $date!='' ){
+			$cosa=strtotime($date);
+			$nextWeek = (7 * 24 * 60 * 60);
+			$ora=$cosa;
+			for ($i=19; $i > -1 ; $i--) { 
+			    if($i<10)$g='0'.$i; else $g=$i;
+			    $result.="<tr><td>w$g</td><td>".date('d/F/Y',$ora)."</td><td>".$nut[$i]."</td></tr>";
+			    $ora+=$nextWeek;
+			}
+			echo$result;
+		}
+		?> -->
+	</table>
+	<form class="grid-form">
+			<fieldset>
+				<legend>WEEK 1</legend>
+				<div data-row-span="6">
+					<div data-field-span="1">
+						<label>SATURDAY 11 April 2013</label>
+						<input type="text" value="6" disabled="disabled">
+					</div>
+					<div data-field-span="1">
+						<label>1 - 1,5 ml</label>
+						<input type="text" value="6" disabled="disabled">
+					</div>
+					<div data-field-span="1">
+						<label>0,5 ml</label>
+						<input type="text" value="6" disabled="disabled">
+					</div>
+					<div data-field-span="1">
+						<label>0,5 ml</label>
+						<input type="text" value="6" disabled="disabled">
+					</div>
+					<div data-field-span="2">
+						<label>NOTE</label>
+						<input type="text">
+					</div>
+				</div>
+			</fieldset>
+	</form>
+</body>
+</html>
