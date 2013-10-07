@@ -13,7 +13,7 @@ Functions
 Data
 ----
 
-Data **serialization**
+### Serialization
 
 ```javascript
 var data = [
@@ -24,18 +24,32 @@ var data = [
 store.set('SAcurrent',data);
 ```
 
-A **chart** is composed by:
+### Chart
 
 - **Chart name** – Unique identifier to recall  
 - **Weekly note set** – A set of notes linked to specific weeks  
 - **Starting date** – The offset to display the calendar  
 
-A **Weekly note set** is composed by:
+```javascript
+var charts = [
+	{ name: '----', noteset: '----', startingdate: '----' },
+	{ name: '----', noteset: '----', startingdate: '----' },
+	{ name: '----', noteset: '----', startingdate: '----' }
+]
+```
+
+### Weekly Note Set
 
 - **Set name** – Unique identifier to recall
     - **Note name** – Unique identifier to recall  
     - **Note** – Text string  
     - **Weeks** – Weeks to display note  
+
+```javascript
+var notesets = [
+	{ name: '----', week: '--',  }
+]
+```
 
 Workflow
 --------
@@ -51,13 +65,31 @@ Workflow
 - **Change starting date** – Table output will begin (appens new starting date to chart)  
 - **Delete a chart** – Cannot undo
 
-## UIs needed
+## UIs
+
+- **TABLE**
+
+```html
+&lt;form class=&quot;gridform&quot;&gt;
+	&lt;!-- WEEK --&gt;
+	&lt;legend&gt;WEEK n&lt;/legend&gt;
+		&lt;!-- DAY --&gt;
+		&lt;div data-row-span=&quot;2&quot;&gt;
+			&lt;div data-field-span=&quot;1&quot;&gt;
+				&lt;label&gt;day month year&lt;/label&gt;
+				&lt;input type=&quot;text&quot; value=&quot;note of the week&quot; class=&quot;disabled&quot;&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+	...
+&lt;/form&gt;
+```
 
 Plugins
 -------
 
 - [glDatePicker](https://github.com/glad/glDatePicker) – To pickup a starting date  
-- [store.js](https://github.com/marcuswestin/store.js) – To store charts
+- [store.js](https://github.com/marcuswestin/store.js) – To store charts  
+- [gridforms](https://github.com/kumailht/gridforms) – To edit notes  
 
 Php
 ---
