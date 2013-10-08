@@ -13,6 +13,11 @@ Functions
 Data
 ----
 
+### Current chart `WCcurrent`
+
+- **Name** – Name of the current chart  
+	`current[ name ]`
+
 ### Charts `WCcharts`
 
 - **Name** – Unique identifier to recall  
